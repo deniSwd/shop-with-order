@@ -29,11 +29,14 @@ export const mainSlice = createSlice({
       const selectedProduct = state.products?.find(i => i.id === action.payload)
       if (!selectedProduct) return
       state.cart.push(selectedProduct)
+    },
+    deleteProductFromCart: (state, action: PayloadAction<number>) => {
+      state.cart = state.cart.filter(i => i.id !== action.payload)
     }
   },
 })
 
-export const {setProducts, setError,addProductInCart} = mainSlice.actions
+export const {setProducts, setError,addProductInCart,deleteProductFromCart} = mainSlice.actions
 
 export const selectProducts = (state: RootState) => state.main.products
 export const selectError = (state: RootState) => state.main.error

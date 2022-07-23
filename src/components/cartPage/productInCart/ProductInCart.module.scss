@@ -1,0 +1,12 @@
+.productInCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1170px;
+  width: 100%;
+  border-bottom: 1px solid #A8AFBB;
+  img {
+    width: 125px;
+    height: 150px;
+  }
+}

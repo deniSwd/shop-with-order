@@ -1,4 +1,4 @@
-body,html {
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*@media screen and (max-width: 1170px) { !* если окно браузера больше максимальной ширины сайта *!
+  html {
+    margin-left: calc(100vw - 100%);
+    margin-right: 0;
+  }
+}*/
