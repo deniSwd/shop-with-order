@@ -1,0 +1,17 @@
+.productBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 380px;
+  border: 1px solid #DEDEDE;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
