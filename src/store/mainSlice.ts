@@ -1,35 +1,44 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {RootState} from './store'
+import {AppThunk, RootState} from './store'
+import {userApi} from "../shopAPI/api";
+import {ProductsType, ProductType} from "../MainTypes";
 
-export interface CounterState {
-  value: number
+export type shopStateType = {
+  products: null | Array<ProductType>
+  error: string
 }
 
-const initialState: CounterState = {
-  value: 0,
+const initialState: shopStateType = {
+  products: null,
+  error:'',
 };
 
 export const mainSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    setProducts: (state, action: PayloadAction<ProductsType>) => {
+      state.products = action.payload.products
     },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload
+    }
   },
 })
 
-export const { incrementByAmount } = mainSlice.actions
+export const {setProducts,setError} = mainSlice.actions
 
-export const selectCount = (state: RootState) => state.main.value
+export const selectProducts = (state: RootState) => state.main.products
+export const selectError = (state: RootState) => state.main.error
 
-/*export const incrementIfOdd =
-  (amount: number): AppThunk =>
-  (dispatch, getState) => {
-    const currentValue = selectCount(getState());
-    if (currentValue % 2 === 1) {
-      dispatch(incrementByAmount(amount));
+export const getAllProducts = (): AppThunk =>
+  async (dispatch) => {
+    try {
+      const products = await userApi.getProducts()
+      dispatch(setProducts(products))
+    } catch (error: any) {
+      dispatch(setError(error.message))
     }
-  }*/
+  }
 
 export default mainSlice.reducer

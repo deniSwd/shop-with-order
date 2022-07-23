@@ -4,4 +4,6 @@ export type ProductType = {
   name: string
   price: string
 }
-export type ProductsType = Array<ProductType>
+export type ProductsType = {
+  products: Array<ProductType>
+}
