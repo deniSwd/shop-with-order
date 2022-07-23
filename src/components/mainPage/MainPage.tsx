@@ -2,7 +2,7 @@ import React, {FC, useEffect} from 'react'
 import {useAppDispatch, useAppSelector} from "../../store/hooks"
 import {getAllProducts, selectProducts} from "../../store/mainSlice"
 import {ProductType} from "../../MainTypes"
-import {Product} from "../productBox/ProductBox"
+import {Product} from "./productBox/ProductBox"
 import s from './mainPage.module.scss'
 
 export const MainPage: FC = () => {

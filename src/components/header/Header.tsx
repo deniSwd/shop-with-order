@@ -1,21 +1,23 @@
 import {FC} from "react"
 import logo from '../../assets/logo.png'
-import cart from '../../assets/cart.png'
-import  s from './Header.module.scss'
+import s from './Header.module.scss'
+import {useAppSelector} from "../../store/hooks";
+import {selectCart} from "../../store/mainSlice";
+import {CartLink} from "./cartLink/CartLink";
+import {NavLink} from "react-router-dom";
 
 export const Header: FC = () => {
+  const cart = useAppSelector(selectCart)
   return (
     <div className={s.header}>
       <div>
-        <img src={logo} alt='logo' />
+        <img src={logo} alt='logo'/>
       </div>
-      <div className={s.cart}>
-        <div>
-          <img src={cart} alt='cart' />
-        </div>
-        <div>Корзина</div>
-        <div>5</div>
-      </div>
+      {cart.length > 0
+        ? <NavLink to={'/cartPage'}>
+          <CartLink/>
+        </NavLink>
+        : <CartLink/>}
     </div>
   )
 }

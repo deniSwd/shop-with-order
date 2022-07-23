@@ -7,6 +7,7 @@ import {Error} from "./components/errorPage/ErrorPage"
 import s from './App.module.scss'
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
+import {RoutesPage} from "./components/RoutesPage";
 
 
 const App: FC = () => {
@@ -16,7 +17,7 @@ const App: FC = () => {
     <div className={s.app}>
       <Header/>
       <div>
-        {errorMessage.length > 0 ? <Error message={errorMessage}/> :  <MainPage />}
+        {errorMessage.length > 0 ? <Error message={errorMessage}/> :  <RoutesPage />}
       </div>
       <Footer />
     </div>

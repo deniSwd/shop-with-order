@@ -3,14 +3,16 @@ import {AppThunk, RootState} from './store'
 import {userApi} from "../shopAPI/api";
 import {ProductsType, ProductType} from "../MainTypes";
 
-export type shopStateType = {
-  products: null | Array<ProductType>
+export type ShopStateType = {
+  products: Array<ProductType>
   error: string
+  cart: Array<ProductType>
 }
 
-const initialState: shopStateType = {
-  products: null,
-  error:'',
+const initialState: ShopStateType = {
+  products: [],
+  error: '',
+  cart: []
 };
 
 export const mainSlice = createSlice({
@@ -22,14 +24,21 @@ export const mainSlice = createSlice({
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload
+    },
+    addProductInCart: (state, action: PayloadAction<number>) => {
+      const selectedProduct = state.products?.find(i => i.id === action.payload)
+      if (!selectedProduct) return
+      state.cart.push(selectedProduct)
     }
   },
 })
 
-export const {setProducts,setError} = mainSlice.actions
+export const {setProducts, setError,addProductInCart} = mainSlice.actions
 
 export const selectProducts = (state: RootState) => state.main.products
 export const selectError = (state: RootState) => state.main.error
+export const selectCart = (state: RootState) => state.main.cart
+
 
 export const getAllProducts = (): AppThunk =>
   async (dispatch) => {
