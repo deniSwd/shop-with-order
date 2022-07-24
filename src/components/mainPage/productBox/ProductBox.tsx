@@ -19,7 +19,7 @@ export const Product:FC<ProductProps> =({product})=> {
         {product.name}
       </div>
       <div>
-        {product.price}
+        {product.price}  ₽
       </div>
       <div>
         <button onClick={()=>dispatch(addProductInCart(product.id))}>Добавить в корзину</button>

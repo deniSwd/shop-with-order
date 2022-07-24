@@ -16,9 +16,7 @@ const App: FC = () => {
   return (
     <div className={s.app}>
       <Header/>
-      <div>
         {errorMessage.length > 0 ? <Error message={errorMessage}/> :  <RoutesPage />}
-      </div>
       <Footer />
     </div>
   );

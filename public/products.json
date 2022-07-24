@@ -4,97 +4,97 @@
       "id": 0,
       "image": "/productsIMG/увлажнитель.png",
       "name": "Увлажнитель воздуха\nSTARWIND SHC1322, 3л, белый\n",
-      "price": "1650 ₽"
+      "price": "1650"
     },
     {
       "id": 1,
       "image": "/productsIMG/триммер.png",
       "name": "Триммер PHILIPS HC3521/15 серебристый/черный",
-      "price": "2290 ₽"
+      "price": "2290"
     },
     {
       "id": 2,
       "image":"/productsIMG/фитнес-трекер.png",
       "name": "Фитнес-трекер HONOR Band 5 CRS-B19S, 0.95\",\nрозовый",
-      "price": "2390 ₽"
+      "price": "2390"
     },
     {
       "id": 3,
       "image": "/productsIMG/мышь.png",
       "name": "Мышь A4TECH Bloody V3,\nигровая, оптическая,\nпроводная, USB, черный",
-      "price": "960 ₽"
+      "price": "960"
     },
     {
       "id": 4,
       "image": "/productsIMG/фитнес-трекер-black.png",
       "name": "Фитнес-трекер HONOR Band 5 CRS-B19S, 0.95\",\nчерный",
-      "price": "2390 ₽"
+      "price": "2390"
     },
     {
       "id": 5,
       "image": "/productsIMG/пылесос.png",
       "name": "Пылесос SINBO SVC 3497,\n2500Вт, синий/серый",
-      "price": "5670 ₽"
+      "price": "5670"
     },
     {
       "id": 6,
       "image": "/productsIMG/планшет.png",
       "name": "Планшет DIGMA Optima\n7 Z800 Android 10.0 серебристый",
-      "price": "9490 ₽"
+      "price": "9490"
     },
     {
       "id": 7,
       "image": "/productsIMG/монитор.png",
       "name": "Монитор игровой ACER Nitro RG241YPbiipx 23.8\" черный",
-      "price": "16 800 ₽"
+      "price": "16800"
     },
     {
       "id": 8,
       "image": "/productsIMG/экшн-камера.png",
       "name": "Экшн-камера DIGMA DiCam 310 4K, WiFi, черный",
-      "price": "2290 ₽"
+      "price": "2290"
     },
     {
       "id": 9,
       "image": "/productsIMG/колонка.png",
       "name": "Умная колонка ЯНДЕКС\nc голосовым помощником Алисой, серебристый",
-      "price": "5670 ₽"
+      "price": "5670"
     },
     {
       "id": 10,
       "image": "/productsIMG/квадрокоптер.png",
       "name": "Квадрокоптер DJI Mini 2\nMT2PD Fly More Combo\nс камерой, серый",
-      "price": "60 990 ₽"
+      "price": "60990"
     },
     {
       "id": 11,
       "image": "/productsIMG/vr-шлем.png",
       "name": "Шлем виртуальной реальности HTC Vive PRO Eye EEA, черный/синий",
-      "price": "11 960 ₽"
+      "price": "11960"
     },
     {
       "id": 12,
       "image": "/productsIMG/МФУ.png",
       "name": "МФУ лазерный CANON i-Sensys MF445dw, A4, лазерный, черный",
-      "price": "35 310 ₽"
+      "price": "35310"
     },
     {
       "id": 13,
       "image": "/productsIMG/смарт-часы.png",
       "name": "Смарт-часы AMAZFIT Bip U, 1.43\", зеленый / зеленый",
-      "price": "4490 ₽"
+      "price": "4490"
     },
     {
       "id": 14,
       "image": "/productsIMG/кофемашина.png",
       "name": "Кофемашина PHILIPS\nEP1224/00, серый/черный",
-      "price": "29 990 ₽"
+      "price": "29990"
     },
     {
       "id": 15,
       "image": "/productsIMG/гироскутер.png",
       "name": "Гироскутер MIZAR MZ10,5CN, 10.5\", карбон",
-      "price": "12 990 ₽"
+      "price": "12990"
     }
   ]
 }

@@ -17,7 +17,7 @@ export const ProductInCart:FC<ProductInCartProps> =({product}) =>{
       </div>
       <div>{product.name}</div>
       <div>counter</div>
-      <div>{product.price}</div>
+      <div>{product.price} ₽</div>
       <button onClick={()=>dispatch(deleteProductFromCart(product.id)) }>X</button>
     </div>
   )
