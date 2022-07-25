@@ -1,4 +1,4 @@
-import {FC} from "react"
+import {FC, useCallback} from "react"
 import {useAppSelector} from "../../store/hooks"
 import {selectCart} from "../../store/mainSlice"
 import {ProductType} from "../../MainTypes"
@@ -10,9 +10,9 @@ import {CartForm} from "./formForCart/CartForm";
 export const CartPage: FC = () => {
   const cart = useAppSelector(selectCart)
 
-  const totalPrice = () => {
+  const totalPrice = useCallback(() => {
     return cart.reduce((sum, product) => sum + Number(product.price), 0)
-  }
+  },[cart])
   if (cart.length === 0) {
     return <Navigate to='/'/>
   }
