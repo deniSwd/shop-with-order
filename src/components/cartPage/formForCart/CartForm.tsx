@@ -2,7 +2,9 @@ import {FC, useCallback} from "react"
 import {Input} from "./input/MyInput"
 import {SubmitHandler, useForm} from "react-hook-form"
 import * as yup from "yup"
-import {yupResolver} from "@hookform/resolvers/yup";
+import {yupResolver} from "@hookform/resolvers/yup"
+import email from '@emailjs/browser'
+
 
 export type IFormValues = {
   name: string
@@ -17,12 +19,28 @@ export const CartForm: FC = () => {
     email: yup.string().email().required()
   }).required()
 
+
+
   const {register, handleSubmit, formState: {errors}, reset} = useForm<IFormValues>({resolver: yupResolver(schema)})
   const onSubmit: SubmitHandler<IFormValues> = useCallback(data => {
+    const templateParams = {
+      telephone: data.telephone,
+      email: data.email,
+      name: data.name,
+      rand: 1258
+    }
     alert(JSON.stringify(data))
     reset()
+    email.send('service_qo99xbs','template_jfri8gu', {...templateParams}, 'Asv5hTc7-2qTnv5Fo')
+      .then((response) => {
+        console.log(templateParams)
+        console.log('SUCCESS!', response.status, response.text);
+      }, (err) => {
+        console.log('FAILED...', err);
+      })
   }, [reset])
-  console.log(errors)
+
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
