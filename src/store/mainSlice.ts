@@ -1,19 +1,23 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk, RootState} from './store'
 import {userApi} from "../shopAPI/api";
-import {ProductsType, ProductType} from "../MainTypes";
+import {PopUPType, ProductsType, ProductType} from "../MainTypes";
 
 export type ShopStateType = {
   products: Array<ProductType>
   error: string
   cart: Array<ProductType>
+  popUpInfo: null | PopUPType
+  displayingPopUp: boolean
 }
 
 const initialState: ShopStateType = {
   products: [],
   error: '',
-  cart: []
-};
+  cart: [],
+  popUpInfo: null,
+  displayingPopUp: false
+}
 
 export const mainSlice = createSlice({
   name: 'main',
@@ -32,15 +36,30 @@ export const mainSlice = createSlice({
     },
     deleteProductFromCart: (state, action: PayloadAction<number>) => {
       state.cart = state.cart.filter(i => i.id !== action.payload)
+    },
+    setPopUp: (state, action: PayloadAction<PopUPType>) => {
+      state.popUpInfo = action.payload
+    },
+    displayingPopUp: (state, action: PayloadAction<boolean>) => {
+      state.displayingPopUp = action.payload
     }
   },
 })
 
-export const {setProducts, setError,addProductInCart,deleteProductFromCart} = mainSlice.actions
+export const {
+  setProducts,
+  setError,
+  addProductInCart,
+  deleteProductFromCart,
+  setPopUp,
+  displayingPopUp
+} = mainSlice.actions
 
 export const selectProducts = (state: RootState) => state.main.products
 export const selectError = (state: RootState) => state.main.error
 export const selectCart = (state: RootState) => state.main.cart
+export const selectPopUp = (state: RootState) => state.main.popUpInfo
+export const selectDisplayingPopUp = (state: RootState) => state.main.displayingPopUp
 
 
 export const getAllProducts = (): AppThunk =>

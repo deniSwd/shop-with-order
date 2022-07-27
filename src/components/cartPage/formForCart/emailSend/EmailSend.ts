@@ -1,9 +1,9 @@
 import {IFormValues} from "../CartForm";
 import email from "@emailjs/browser";
 
-export const emailSend = (data:IFormValues) => {
+export const emailSend = (data:IFormValues, randomNumb: number) => {
 
-  const randomNumb = Math.floor(Math.random()*1000)
+
   const templateParams = {
     telephone: data.telephone,
     email: data.email,

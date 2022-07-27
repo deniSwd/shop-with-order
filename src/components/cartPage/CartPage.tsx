@@ -1,10 +1,10 @@
-import {FC, useCallback} from "react"
+import {FC, useCallback, useEffect} from "react"
 import {useAppSelector} from "../../store/hooks"
 import {selectCart} from "../../store/mainSlice"
 import {ProductType} from "../../MainTypes"
 import {ProductInCart} from "./productInCart/ProductInCart"
 import s from './CartPage.module.scss'
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import {CartForm} from "./formForCart/CartForm";
 
 export const CartPage: FC = () => {
@@ -13,9 +13,13 @@ export const CartPage: FC = () => {
   const totalPrice = useCallback(() => {
     return cart.reduce((sum, product) => sum + Number(product.price), 0)
   },[cart])
-  if (cart.length === 0) {
-    return <Navigate to='/'/>
-  }
+  
+  const nav = useNavigate()
+  
+  useEffect(() => {
+    if (cart.length === 0) nav('/', { replace: true })
+  }, [cart.length, nav])
+
   return (
     <div className={s.cartPage}>
       <div>Корзина</div>

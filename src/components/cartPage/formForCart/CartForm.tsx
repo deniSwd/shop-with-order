@@ -4,6 +4,8 @@ import {SubmitHandler, useForm} from "react-hook-form"
 import * as yup from "yup"
 import {yupResolver} from "@hookform/resolvers/yup"
 import {emailSend} from "./emailSend/EmailSend";
+import {useAppDispatch} from "../../../store/hooks";
+import {displayingPopUp, setPopUp} from "../../../store/mainSlice";
 
 
 export type IFormValues = {
@@ -13,6 +15,8 @@ export type IFormValues = {
 }
 
 export const CartForm: FC = () => {
+  const dispatch = useAppDispatch()
+  const randomNumb = Math.floor(Math.random() * 1000)
 
   const phoneRegExp = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
   const schema = yup.object({
@@ -25,14 +29,18 @@ export const CartForm: FC = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors, dirtyFields},
-    reset
+    formState: {errors, dirtyFields}
   } = useForm<IFormValues>({resolver: yupResolver(schema)})
   const onSubmit: SubmitHandler<IFormValues> = useCallback(data => {
-    alert(JSON.stringify(data))
-    reset()
-    emailSend(data)
-  }, [reset])
+    const popUpInfo = {
+      name: data.name,
+      orderNumb: randomNumb,
+      telephone: data.telephone
+    }
+    emailSend(data, randomNumb)
+    dispatch(setPopUp(popUpInfo))
+    dispatch(displayingPopUp(true))
+  }, [])
 
 
   return (

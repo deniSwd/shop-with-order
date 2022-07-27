@@ -7,3 +7,8 @@ export type ProductType = {
 export type ProductsType = {
   products: Array<ProductType>
 }
+export type PopUPType = {
+  name: string
+  orderNumb: number
+  telephone: string
+}
