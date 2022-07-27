@@ -3,7 +3,7 @@ import {Input} from "./input/MyInput"
 import {SubmitHandler, useForm} from "react-hook-form"
 import * as yup from "yup"
 import {yupResolver} from "@hookform/resolvers/yup"
-import email from '@emailjs/browser'
+import {emailSend} from "./emailSend/EmailSend";
 
 
 export type IFormValues = {
@@ -11,35 +11,28 @@ export type IFormValues = {
   telephone: string
   email: string
 }
-const phoneRegExp = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
+
 export const CartForm: FC = () => {
+
+  const phoneRegExp = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
   const schema = yup.object({
-    name: yup.string().min(2).max(20).required(),
-    telephone: yup.string().matches(phoneRegExp).required(),
-    email: yup.string().email().required()
+    name: yup.string().min(2, 'Введите не менее 3-х символов').max(20, 'Введите не более 20-ти символов').required('Это поле обязательно'),
+    telephone: yup.string().matches(phoneRegExp, 'Некорректный формат телефона').required('Это поле обязательно'),
+    email: yup.string().email('Некорректный формат почты').required('Это поле обязательно')
   }).required()
 
 
-
-  const {register, handleSubmit, formState: {errors}, reset} = useForm<IFormValues>({resolver: yupResolver(schema)})
+  const {
+    register,
+    handleSubmit,
+    formState: {errors, dirtyFields},
+    reset
+  } = useForm<IFormValues>({resolver: yupResolver(schema)})
   const onSubmit: SubmitHandler<IFormValues> = useCallback(data => {
-    const templateParams = {
-      telephone: data.telephone,
-      email: data.email,
-      name: data.name,
-      rand: 1258
-    }
     alert(JSON.stringify(data))
     reset()
-    email.send('service_qo99xbs','template_jfri8gu', {...templateParams}, 'Asv5hTc7-2qTnv5Fo')
-      .then((response) => {
-        console.log(templateParams)
-        console.log('SUCCESS!', response.status, response.text);
-      }, (err) => {
-        console.log('FAILED...', err);
-      })
+    emailSend(data)
   }, [reset])
-
 
 
   return (
@@ -57,7 +50,10 @@ export const CartForm: FC = () => {
              register={register}
              placeholder='Email'
              errors={errors}/>
-      <input type="submit"/>
+      <button type="submit"
+              disabled={!dirtyFields.name || !dirtyFields.email || !dirtyFields.telephone}>
+        Оформить заказ
+      </button>
     </form>
   )
 }
