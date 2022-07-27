@@ -14,7 +14,7 @@ export const Header: FC = () => {
         <img src={logo} alt='logo'/>
       </div>
       {cart.length > 0
-        ? <NavLink to={'/cartPage'}>
+        ? <NavLink to={'/cartPage'} className={s.nav}>
           <CartLink/>
         </NavLink>
         : <CartLink/>}

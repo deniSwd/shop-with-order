@@ -8,11 +8,11 @@ export const CartLink: FC = () => {
   const cart = useAppSelector(selectCart)
   return (
     <div className={s.cartLink}>
-      <div>
+      <div className={s.cartImg}>
         <img src={cartImg} alt='cart'/>
       </div>
-      <div>Корзина</div>
-      <div>{cart.length}</div>
+      <div className={s.name}>Корзина</div>
+      <div className={s.cartLength}>{cart.length}</div>
     </div>
   )
 }

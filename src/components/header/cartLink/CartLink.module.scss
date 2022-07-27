@@ -1,3 +1,38 @@
 .cartLink {
   display: flex;
+  width: 142px;
+  height: 24px;
+
+  .cartImg {
+    width: 28px;
+    height: 23px;
+    margin-bottom: 1px;
+  }
+
+  .name {
+    width: 73px;
+    height: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 1px;
+    color: #35383A;
+  }
+
+  .cartLength {
+    width: 21px;
+    height: 21px;
+    margin-top: 3px;
+    border-radius: 11px;
+    color: #FFFFFF;
+    background: #00A82D;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+  }
 }
