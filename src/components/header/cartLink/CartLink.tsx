@@ -3,11 +3,12 @@ import cartImg from "../../../assets/cart.png"
 import {FC} from "react"
 import {useAppSelector} from "../../../store/hooks";
 import {selectCart} from "../../../store/mainSlice";
+import cn from "classnames";
 
 export const CartLink: FC = () => {
   const cart = useAppSelector(selectCart)
   return (
-    <div className={s.cartLink}>
+    <div className={cn(s.cartLink, cart.length === 0 && s.hide)}>
       <div className={s.cartImg}>
         <img src={cartImg} alt='cart'/>
       </div>

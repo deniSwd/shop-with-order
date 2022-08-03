@@ -1,29 +1,31 @@
-import {FC} from "react"
+import {FC, useMemo} from "react"
 import {ProductType} from "../../../MainTypes"
 import s from './ProductBox.module.scss'
-import {useAppDispatch} from "../../../store/hooks";
-import {addProductInCart} from "../../../store/mainSlice";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks";
+import {addProductInCart, selectCart} from "../../../store/mainSlice";
+import {Button} from "../../button/Button";
+import {AddToCartButton} from "../../button/AddToCartButton";
 
-type ProductProps ={
+type ProductProps = {
   product: ProductType
 }
 
-export const Product:FC<ProductProps> =({product})=> {
+export const ProductBox: FC<ProductProps> = ({product}) => {
   const dispatch = useAppDispatch()
-  return(
+  const products = useAppSelector(selectCart)
+  const alreadyInCart = useMemo(() => products.some(p => p.id === product.id), [products, product])
+  return (
     <div className={s.productBox}>
       <div>
         <img src={product.image} alt='product'/>
       </div>
-      <div>
+      <div className={s.name}>
         {product.name}
       </div>
-      <div>
-        {product.price}  ₽
+      <div className={s.price}>
+        {product.price} ₽
       </div>
-      <div>
-        <button onClick={()=>dispatch(addProductInCart(product.id))}>Добавить в корзину</button>
-      </div>
+      <AddToCartButton active={alreadyInCart} onClick={() => dispatch(addProductInCart(product.id))}/>
     </div>
   )
 }

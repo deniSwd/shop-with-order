@@ -22,6 +22,7 @@
     width: 100%;
     grid-template-columns: repeat(4, 270px);
     grid-gap: 40px 30px;
+    justify-content: center;
   }
 
   @media screen and (min-width: 931px) and (max-width: 1170px) {
@@ -32,6 +33,16 @@
   @media screen and (min-width: 691px) and (max-width: 930px) {
     .productsField {
       grid-template-columns: repeat(3, 270px);
+    }
+  }
+  @media screen and (max-width: 690px) {
+    .productsField {
+      grid-template-columns: 449px;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .productsField {
+      grid-template-columns: 270px;
     }
   }
 }

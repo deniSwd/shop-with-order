@@ -2,13 +2,14 @@ export type ProductType = {
   id: number
   image: string
   name: string
-  price: string
+  price: number
+  quantity: number
 }
 export type ProductsType = {
   products: Array<ProductType>
 }
-export type PopUPType = {
+export type PopUpInfo = {
   name: string
-  orderNumb: number
+  orderId: number
   telephone: string
 }

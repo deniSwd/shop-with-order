@@ -1,11 +1,23 @@
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1170px;
   width: 100%;
   margin: 37px 0 60px 0;
+
   .nav {
     text-decoration: none;
+  }
+
+  .logo {
+    width: 215px;
+    @media screen and (max-width: 510px) {
+      width: 180px;
+    }
+  }
+
+  @media screen and (max-width: 930px) {
+    padding: 0 30px;
   }
 }

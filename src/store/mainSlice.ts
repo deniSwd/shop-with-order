@@ -1,13 +1,13 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk, RootState} from './store'
 import {userApi} from "../shopAPI/api";
-import {PopUPType, ProductsType, ProductType} from "../MainTypes";
+import {PopUpInfo, ProductType} from "../MainTypes";
 
 export type ShopStateType = {
   products: Array<ProductType>
   error: string
   cart: Array<ProductType>
-  popUpInfo: null | PopUPType
+  popUpInfo: null | PopUpInfo
   displayingPopUp: boolean
 }
 
@@ -23,8 +23,8 @@ export const mainSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<ProductsType>) => {
-      state.products = action.payload.products
+    setProducts: (state, action: PayloadAction<Array<ProductType>>) => {
+      state.products = action.payload
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload
@@ -37,11 +37,16 @@ export const mainSlice = createSlice({
     deleteProductFromCart: (state, action: PayloadAction<number>) => {
       state.cart = state.cart.filter(i => i.id !== action.payload)
     },
-    setPopUp: (state, action: PayloadAction<PopUPType>) => {
+    setPopUp: (state, action: PayloadAction<PopUpInfo>) => {
       state.popUpInfo = action.payload
     },
     displayingPopUp: (state, action: PayloadAction<boolean>) => {
       state.displayingPopUp = action.payload
+    },
+    setQuantity: (state, action: PayloadAction<{ id: number, quantity: number }>) => {
+      const selectedProduct = state.cart.find(i => i.id === action.payload.id)
+      if (!selectedProduct) return
+      selectedProduct.quantity = action.payload.quantity
     }
   },
 })
@@ -52,6 +57,7 @@ export const {
   addProductInCart,
   deleteProductFromCart,
   setPopUp,
+  setQuantity,
   displayingPopUp
 } = mainSlice.actions
 
@@ -65,8 +71,8 @@ export const selectDisplayingPopUp = (state: RootState) => state.main.displaying
 export const getAllProducts = (): AppThunk =>
   async (dispatch) => {
     try {
-      const products = await userApi.getProducts()
-      dispatch(setProducts(products))
+      const { products } = await userApi.getProducts()
+      dispatch(setProducts(products.map(v => ({...v, quantity: 1, price: +v.price}))))
     } catch (error: any) {
       dispatch(setError(error.message))
     }

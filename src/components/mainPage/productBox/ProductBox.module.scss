@@ -1,17 +1,92 @@
 .productBox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 270px;
   height: 380px;
   border: 1px solid #DEDEDE;
   box-sizing: border-box;
   background-color: #FFFFFF;
+  padding: 20px 20px 35px 20px;
+  transition: padding .3s;
+  @media screen and (min-width: 690px) {
+    &:hover {
+      padding-bottom: 10px;
+      .name {
+        margin-top: 4px;
+      }
+      button {
+        margin-top: 15px;
+        display: block;
+      }
+    }
+  }
 
+  * {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+  }
+
+  .name {
+    text-align: center;
+    height: 63px;
+    margin-top: 34px;
+    transition: margin-top .3s;
+  }
+
+  .price {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+  }
+
+  button {
+    display: none;
+  }
 
   img {
     width: 200px;
     height: 200px;
+    object-fit: contain;
   }
+
+  @media screen and (max-width: 690px) {
+    width: 449px;
+    height: 590px;
+    padding-bottom: 18px;
+    font-size: 16px;
+    .price {
+      margin: 15px 0;
+    }
+    button {
+      display: block;
+    }
+    img {
+      width: 334px;
+      height: 399px
+    }
+    .name {
+      margin-top: 15px;
+      width: 330px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 270px;
+    height: 380px;
+    padding: 10px 35px;
+    img {
+      width: 200px;
+      height: 200px;
+    }
+    .name {
+      margin-top: 4px;
+      width: 230px;
+    }
+    .price {
+      margin-bottom: 15px;
+    }
+  }
+
 }

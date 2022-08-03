@@ -1,7 +1,13 @@
 .cartLink {
   display: flex;
-  width: 142px;
   height: 24px;
+  gap: 10px;
+  &:hover {
+    cursor: pointer;
+    .name {
+      color: #00A82D;
+    }
+  }
 
   .cartImg {
     width: 28px;
@@ -20,6 +26,9 @@
     margin-top: 3px;
     margin-bottom: 1px;
     color: #35383A;
+    @media screen and (max-width: 512px) {
+      display: none;
+    }
   }
 
   .cartLength {
@@ -34,5 +43,17 @@
     font-size: 12px;
     line-height: 21px;
     text-align: center;
+  }
+}
+
+.hide {
+  .cartLength {
+    visibility: hidden;
+  }
+  &:hover {
+    cursor: default;
+    .name {
+      color: black;
+    }
   }
 }

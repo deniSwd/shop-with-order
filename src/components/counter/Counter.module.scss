@@ -1,0 +1,19 @@
+.counter {
+  display: flex;
+  .value {
+    width: 90px;
+    height: 40px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border-top: 1px solid #A8AFBB;
+    border-bottom: 1px solid #A8AFBB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 690px) {
+      width: 70px;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React, {FC, useEffect} from 'react'
 import {useAppDispatch, useAppSelector} from "../../store/hooks"
 import {getAllProducts, selectProducts} from "../../store/mainSlice"
 import {ProductType} from "../../MainTypes"
-import {Product} from "./productBox/ProductBox"
+import {ProductBox} from "./productBox/ProductBox"
 import s from './mainPage.module.scss'
 
 export const MainPage: FC = () => {
@@ -19,7 +19,7 @@ export const MainPage: FC = () => {
         Каталог товаров
       </div>
       <div className={s.productsField}>
-        {products?.map((product: ProductType, i) => <Product product={product} key={i}/>)}
+        {products?.map((product: ProductType, i) => <ProductBox product={product} key={i}/>)}
       </div>
     </div>
   );
