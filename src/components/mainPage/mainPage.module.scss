@@ -25,22 +25,17 @@
     justify-content: center;
   }
 
-  @media screen and (min-width: 931px) and (max-width: 1170px) {
-    .productsField {
-
-    }
-  }
-  @media screen and (min-width: 691px) and (max-width: 930px) {
+  @media screen and (min-width: 900px) and (max-width: 1200px) {
     .productsField {
       grid-template-columns: repeat(3, 270px);
     }
   }
-  @media screen and (max-width: 690px) {
+  @media screen and (min-width: 480px) and (max-width: 900px) {
     .productsField {
       grid-template-columns: 449px;
     }
   }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 480px) {
     .productsField {
       grid-template-columns: 270px;
     }

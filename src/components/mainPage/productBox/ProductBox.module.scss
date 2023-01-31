@@ -51,7 +51,7 @@
     object-fit: contain;
   }
 
-  @media screen and (max-width: 690px) {
+  @media screen and (max-width: 900px) {
     width: 449px;
     height: 590px;
     padding-bottom: 18px;
@@ -72,7 +72,7 @@
     }
   }
 
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 480px) {
     width: 270px;
     height: 380px;
     padding: 10px 35px;

@@ -18,8 +18,8 @@
     transform: translate(-50%, -50%);
     padding: 44px 33px 41px 33px;
 
-    @media screen and (max-width: 320px) {
-      width: 278px;
+    @media screen and (max-width: 540px) {
+      width: 300px;
     }
 
     .text {
@@ -60,7 +60,7 @@
         content: '';
         position: absolute;
         top: -9px;
-        left: 0px;
+        left: 0;
         width: 20px;
         height: 20px;
         background-color: transparent;
